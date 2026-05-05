@@ -1,14 +1,23 @@
 # FDDP
 
-FDDP is an experimental backend-defined data contract platform with a Go runtime, a GORM-backed Lite layer, and a TypeScript/Next.js SDK.
+FDDP is an experimental application data-access governance layer.
 
-It is designed for teams that want to reduce scattered page-data REST endpoints without moving data authority into the frontend. The backend publishes a contract, enforces authorization and query budgets, maps fields to safe storage access, and generates typed frontend access.
+It lets a backend publish a governed data contract for page reads and simple data commands, then generates a typed TypeScript SDK for application code. The backend remains the authority for permissions, tenant boundaries, query cost, field-to-storage mapping, batching, cache scope, and contract evolution.
 
 Status: `v0.1.0-alpha`. The core path works, but APIs are still expected to evolve.
 
-## Why
+## Positioning
 
-Small and mid-sized web apps often accumulate many thin endpoints:
+FDDP is not trying to replace every REST API.
+
+The intended split is:
+
+- REST keeps business-process APIs: login, payment, upload/download, webhooks, long-running jobs, third-party callbacks, and externally stable public APIs.
+- FDDP absorbs application data-access APIs: page data, profile fragments, dashboards, filtered lists, relation expand, and simple model-adjacent commands.
+
+In that role, FDDP behaves less like a frontend query language and more like a runtime data contract governance layer for business applications.
+
+Small and mid-sized web apps often accumulate many thin page-data endpoints:
 
 - profile fragments
 - dashboard data
@@ -16,7 +25,7 @@ Small and mid-sized web apps often accumulate many thin endpoints:
 - page-specific joins
 - simple update commands
 
-FDDP keeps REST for business-process APIs, while moving page-data access into a governed contract:
+FDDP moves that surface into a backend-owned contract:
 
 ```ts
 const api = createFddpApi(fddp);
@@ -33,6 +42,15 @@ await api.load({
 ```
 
 The backend still decides which fields exist, who can read them, how they map to storage, and how expensive a query may be.
+
+## What It Governs
+
+- Data contract: fields, resources, commands, generated frontend types.
+- Access control: subject, tenant, roles/scopes, policy version, protected fields.
+- Query safety: max fields/resources/depth/nodes, collection size, expand depth, filter/order count, weighted cost, timeout.
+- Storage mapping: client field names are mapped to explicit backend fields/columns, not trusted as raw SQL.
+- N+1 control: field groups and request-scoped batch loaders expose resolver/batch call counts in trace output.
+- Evolution: contract check/diff treats breaking changes as a governed backend API surface.
 
 ## Packages
 

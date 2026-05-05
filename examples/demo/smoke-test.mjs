@@ -11,13 +11,13 @@ const repoRoot = resolve(demoRoot, "..", "..");
 const backendDir = join(demoRoot, "backend");
 const frontendDir = join(demoRoot, "frontend");
 const sdkCli = join(repoRoot, "packages", "nextjs-sdk", "dist", "cli.js");
-const npmCli = join(dirname(process.execPath), "node_modules", "npm", "bin", "npm-cli.js");
+const tscCli = join(frontendDir, "node_modules", "typescript", "bin", "tsc");
 
 if (!existsSync(sdkCli)) {
   throw new Error("Missing packages/nextjs-sdk/dist/cli.js. Run `cd packages/nextjs-sdk && npm install && npm run build` first.");
 }
-if (!existsSync(npmCli)) {
-  throw new Error("Missing npm CLI next to the current Node.js executable.");
+if (!existsSync(tscCli)) {
+  throw new Error("Missing demo TypeScript dependency. Run `cd examples/demo/frontend && npm install` first.");
 }
 
 const tempDir = await mkdtemp(join(tmpdir(), "fddp-demo-smoke-"));
@@ -43,7 +43,7 @@ try {
   await run(process.execPath, [sdkCli, "--input", `${baseUrl}/contract`, "--output", "src/fddp.generated.ts"], {
     cwd: frontendDir
   });
-  await run(process.execPath, [npmCli, "run", "typecheck"], { cwd: frontendDir });
+  await run(process.execPath, [tscCli, "--noEmit"], { cwd: frontendDir });
 
   await assertQuery(baseUrl);
   await assertCommand(baseUrl);
