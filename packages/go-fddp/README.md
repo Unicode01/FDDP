@@ -250,8 +250,10 @@ Use `fddplite.NewProductionApp(db, options...)` for deployment defaults and `fdd
 ## Install
 
 ```bash
-go get github.com/Unicode01/FDDP/packages/go-fddp
+go get github.com/Unicode01/FDDP/packages/go-fddp@v0.1.2-alpha
 ```
+
+This module is stored under `packages/go-fddp`, so releases use the Git tag form `packages/go-fddp/v0.1.2-alpha`.
 
 ## Minimal server
 
@@ -362,6 +364,95 @@ The diff command exits non-zero when the new contract removes registered surface
 ## Gin integration
 
 `go-fddp` does not require its built-in `net/http` handler. Frameworks can read the request body, build `IdentityContext`, and call the framework-neutral execution methods.
+
+For a Gin app that wants FDDP under `/api/fddp/*`, keep the backend-owned identity resolver and route each endpoint explicitly. A runnable version lives in `examples/gin`.
+
+```go
+package main
+
+import (
+  "context"
+  "io"
+  "net/http"
+
+  fddp "github.com/Unicode01/FDDP/packages/go-fddp"
+  "github.com/gin-gonic/gin"
+)
+
+const maxFDDPBodyBytes int64 = 1 << 20
+
+func mountFDDP(router *gin.Engine, engine *fddp.Engine) {
+  group := router.Group("/api/fddp")
+
+  group.GET("/contract", func(c *gin.Context) {
+    c.Header("cache-control", "no-store")
+    c.JSON(http.StatusOK, engine.Contract())
+  })
+
+  group.POST("/data/query", func(c *gin.Context) {
+    body, err := io.ReadAll(http.MaxBytesReader(c.Writer, c.Request.Body, maxFDDPBodyBytes))
+    if err != nil {
+      c.JSON(http.StatusBadRequest, gin.H{"errors": []fddp.DDPError{{
+        Code: "BAD_REQUEST",
+        SafeMessage: "request body is invalid or too large",
+      }}})
+      return
+    }
+
+    result := engine.ExecuteQueryBody(c.Request.Context(), fddp.QueryEndpointRequest{
+      Body:        body,
+      Identity:    identityFromRequest(c.Request),
+      HTTPRequest: c.Request,
+    })
+    c.JSON(result.Status, result.Response)
+  })
+
+  group.POST("/command/execute", func(c *gin.Context) {
+    body, err := io.ReadAll(http.MaxBytesReader(c.Writer, c.Request.Body, maxFDDPBodyBytes))
+    if err != nil {
+      c.JSON(http.StatusBadRequest, gin.H{"errors": []fddp.DDPError{{
+        Code: "BAD_REQUEST",
+        SafeMessage: "request body is invalid or too large",
+      }}})
+      return
+    }
+
+    result := engine.ExecuteCommandBody(c.Request.Context(), fddp.CommandEndpointRequest{
+      Body:        body,
+      Identity:    identityFromRequest(c.Request),
+      HTTPRequest: c.Request,
+    })
+    c.JSON(result.Status, result.Response)
+  })
+}
+
+var identityFromRequest = fddp.BearerTokenIdentityResolver(
+  fddp.BearerTokenVerifierFunc(func(ctx context.Context, token string) (fddp.TokenClaims, error) {
+    // Verify a JWT or session token here.
+    // Derive subject and tenant from trusted token claims, not client headers.
+    return fddp.TokenClaims{
+      Subject:           "user_123",
+      TenantID:          "tenant_abc",
+      Roles:             []string{"tenant_admin"},
+      PermissionVersion: "perm_v17",
+      PolicyVersion:     "policy_v9",
+    }, nil
+  }),
+)
+```
+
+The frontend client should then use:
+
+```ts
+export const fddp = createFddpClient({
+  baseUrl: "/api/fddp",
+  getAccessToken: async () => sessionStorage.getItem("access_token")
+});
+```
+
+If your framework does not need custom routing, the built-in `engine.Handler()` still exposes `/contract`, `/data/query`, and `/command/execute`.
+
+For header-based local tests only:
 
 ```go
 router.POST("/data/query", func(c *gin.Context) {

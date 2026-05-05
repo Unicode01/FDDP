@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.2-alpha
+
+- Adds a root npm package entry so GitHub installation works before npm publishing.
+- Documents GitHub install for `@fddp/next-sdk`.
+- Documents versioned Go module install for `packages/go-fddp`.
+- Adds a Gin integration example mounted under `/api/fddp/*` with `BearerTokenIdentityResolver`.
+- Marks Next/React peers optional so core SDK installs do not pull framework dependencies unnecessarily.
+
 ## v0.1.1-alpha
 
 - Clarifies FDDP positioning as backend-owned application data access governance.

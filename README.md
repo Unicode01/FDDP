@@ -4,7 +4,7 @@ FDDP is an experimental application data-access governance layer.
 
 It lets a backend publish a governed data contract for page reads and simple data commands, then generates a typed TypeScript SDK for application code. The backend remains the authority for permissions, tenant boundaries, query cost, field-to-storage mapping, batching, cache scope, and contract evolution.
 
-Status: `v0.1.0-alpha`. The core path works, but APIs are still expected to evolve.
+Status: `v0.1.2-alpha`. The core path works, but APIs are still expected to evolve.
 
 ## Positioning
 
@@ -57,16 +57,34 @@ The backend still decides which fields exist, who can read them, how they map to
 - `packages/go-fddp`: Go runtime, FDDP Lite, GORM adapter, query/command guards, auth identity hooks, trace, cache, idempotency, and contract publication.
 - `packages/nextjs-sdk`: TypeScript SDK, generated `createFddpApi`, React/Next helpers, contract codegen/check/diff, and `fddp new` starter scaffolding.
 - `examples/demo`: end-to-end GORM + Lite + TypeScript SDK demo with smoke test.
+- `examples/gin`: Gin mounting example under `/api/fddp/*` with bearer-token identity resolution.
 
 ## Quick Start
 
-Build the TypeScript SDK, then create a starter app:
+Install the TypeScript SDK from GitHub while the package is not published to npm:
 
 ```bash
+npm install github:Unicode01/FDDP#v0.1.2-alpha
+npx fddp new my-fddp-app
+```
+
+Install the Go runtime:
+
+```bash
+go get github.com/Unicode01/FDDP/packages/go-fddp@v0.1.2-alpha
+```
+
+The Go module lives in a subdirectory, so the matching Git tag is `packages/go-fddp/v0.1.2-alpha`.
+
+For source development, build the TypeScript SDK first, then run the local CLI:
+
+```bash
+git clone https://github.com/Unicode01/FDDP.git
+cd FDDP
 cd packages/nextjs-sdk
 npm install
 npm run build
-node dist/cli.js new my-fddp-app
+node dist/cli.js new ../../my-fddp-app
 ```
 
 Run the generated backend:

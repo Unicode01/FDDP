@@ -1,0 +1,74 @@
+{
+  "name": "@fddp/next-sdk",
+  "version": "0.1.2-alpha",
+  "description": "TypeScript SDK for FDDP backend-owned application data access governance.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Unicode01/FDDP.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Unicode01/FDDP/issues"
+  },
+  "homepage": "https://github.com/Unicode01/FDDP#readme",
+  "type": "module",
+  "main": "./packages/nextjs-sdk/dist/index.cjs",
+  "module": "./packages/nextjs-sdk/dist/index.js",
+  "types": "./packages/nextjs-sdk/dist/index.d.ts",
+  "sideEffects": false,
+  "bin": {
+    "fddp": "./packages/nextjs-sdk/dist/cli.js",
+    "fddp-codegen": "./packages/nextjs-sdk/dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./packages/nextjs-sdk/dist/index.d.ts",
+      "import": "./packages/nextjs-sdk/dist/index.js",
+      "require": "./packages/nextjs-sdk/dist/index.cjs"
+    },
+    "./react": {
+      "types": "./packages/nextjs-sdk/dist/react.d.ts",
+      "import": "./packages/nextjs-sdk/dist/react.js",
+      "require": "./packages/nextjs-sdk/dist/react.cjs"
+    },
+    "./next": {
+      "types": "./packages/nextjs-sdk/dist/next.d.ts",
+      "import": "./packages/nextjs-sdk/dist/next.js",
+      "require": "./packages/nextjs-sdk/dist/next.cjs"
+    }
+  },
+  "files": [
+    "packages/nextjs-sdk/dist",
+    "packages/nextjs-sdk/examples",
+    "packages/nextjs-sdk/README.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "prepare": "npm --prefix packages/nextjs-sdk install && npm --prefix packages/nextjs-sdk run build"
+  },
+  "peerDependencies": {
+    "next": ">=14",
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "next": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "tsx": "^4.21.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0"
+  }
+}

@@ -21,6 +21,7 @@ jobs:
           go-version: "1.22"
           cache-dependency-path: |
             packages/go-fddp/go.sum
+            examples/gin/go.sum
             examples/demo/backend/go.sum
 
       - uses: actions/setup-node@v4
@@ -49,6 +50,10 @@ jobs:
 
       - name: Test demo backend
         working-directory: examples/demo/backend
+        run: go test ./...
+
+      - name: Test Gin example
+        working-directory: examples/gin
         run: go test ./...
 
       - name: Install demo frontend dependencies
