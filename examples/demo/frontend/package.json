@@ -1,0 +1,15 @@
+{
+  "name": "fddp-demo-frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "codegen": "fddp codegen",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fddp/next-sdk": "file:../../../packages/nextjs-sdk"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}

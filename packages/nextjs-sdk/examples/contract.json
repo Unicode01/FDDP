@@ -1,0 +1,53 @@
+{
+  "contractVersion": "contract_v12",
+  "fields": [
+    {
+      "field": "me.profile.name",
+      "type": "string"
+    },
+    {
+      "field": "me.profile.avatar",
+      "type": "string",
+      "nullable": true
+    },
+    {
+      "field": "tenant.current.name",
+      "type": "string"
+    },
+    {
+      "field": "global.config.appName",
+      "type": "string"
+    }
+  ],
+  "resources": [
+    {
+      "path": "project.list",
+      "types": ["collection"],
+      "maxPageSize": 50,
+      "fields": [
+        { "field": "id", "type": "string", "filterable": true, "orderable": true },
+        { "field": "name", "type": "string", "filterable": true, "orderable": true },
+        { "field": "status", "type": "string", "filterable": true, "orderable": true },
+        { "field": "updatedAt", "type": "string", "filterable": true, "orderable": true }
+      ],
+      "relations": [
+        {
+          "name": "owner",
+          "fields": [
+            { "field": "id", "type": "string" },
+            { "field": "name", "type": "string" }
+          ]
+        }
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "name": "user.profile.update",
+      "idempotencyRequired": true,
+      "input": [
+        { "field": "displayName", "type": "string", "required": true }
+      ]
+    }
+  ]
+}
