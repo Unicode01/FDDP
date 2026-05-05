@@ -24,6 +24,22 @@ The smoke test starts the Go demo backend on a free local port, pulls `GET /cont
 - `packages/nextjs-sdk`: TypeScript / Next.js SDK with Lite query client, resource query descriptors, contract type generation, V9 response envelope normalization, memory cache, React hooks, and server helper.
 - `packages/go-fddp`: Go backend runtime with field registry, resource registry, command registry, HTTP handlers, request-scoped batch loading, policy checks, cache, trace, and idempotency support.
 
+## Install Before Package Publishing
+
+The TypeScript SDK is not published to npm yet. Install it from the GitHub release tag for now:
+
+```bash
+npm install github:Unicode01/FDDP#v0.1.2-alpha
+```
+
+The Go runtime is a subdirectory module:
+
+```bash
+go get github.com/Unicode01/FDDP/packages/go-fddp@v0.1.2-alpha
+```
+
+That Go command resolves through the Git tag `packages/go-fddp/v0.1.2-alpha`.
+
 ## Protocol endpoints
 
 - `POST /data/query`
@@ -144,7 +160,7 @@ Create a small starter:
 ```bash
 cd packages/nextjs-sdk
 npm run build
-npx fddp new my-fddp-app
+node dist/cli.js new ../../my-fddp-app
 ```
 
 Run the existing demo loop:

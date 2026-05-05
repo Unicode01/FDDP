@@ -18,8 +18,10 @@ This package intentionally starts with the v0.1 alpha surface:
 
 ## Install
 
+The package is not published to npm yet. Install from GitHub for now:
+
 ```bash
-npm install @fddp/next-sdk
+npm install github:Unicode01/FDDP#v0.1.2-alpha
 ```
 
 ## Starter project
@@ -44,6 +46,15 @@ Templates:
 npx fddp new my-api --template go
 npx fddp new my-web --template next
 npx fddp new my-app --template fullstack
+```
+
+For source development, build this package and run the local CLI directly:
+
+```bash
+cd packages/nextjs-sdk
+npm install
+npm run build
+node dist/cli.js new ../../my-fddp-app
 ```
 
 ## Lite client
