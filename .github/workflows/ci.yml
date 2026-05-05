@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+          cache-dependency-path: |
+            packages/go-fddp/go.sum
+            examples/demo/backend/go.sum
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: |
+            packages/nextjs-sdk/package-lock.json
+            examples/demo/frontend/package-lock.json
+
+      - name: Test Go runtime
+        working-directory: packages/go-fddp
+        run: go test ./...
+
+      - name: Install TypeScript SDK dependencies
+        working-directory: packages/nextjs-sdk
+        run: npm ci
+
+      - name: Test TypeScript SDK
+        working-directory: packages/nextjs-sdk
+        run: |
+          npm run test:codegen
+          npm run test:cli
+          npm run typecheck
+          npm run build
+
+      - name: Test demo backend
+        working-directory: examples/demo/backend
+        run: go test ./...
+
+      - name: Install demo frontend dependencies
+        working-directory: examples/demo/frontend
+        run: npm ci
+
+      - name: Typecheck demo frontend
+        working-directory: examples/demo/frontend
+        run: npm run typecheck
+
+      - name: Smoke test demo
+        working-directory: examples/demo
+        run: node smoke-test.mjs

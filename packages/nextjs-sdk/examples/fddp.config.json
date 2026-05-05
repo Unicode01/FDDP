@@ -1,0 +1,6 @@
+{
+  "contract": "http://localhost:8080/contract",
+  "output": "src/fddp.generated.ts",
+  "dataTypeName": "FddpGeneratedData",
+  "fieldsConstName": "fields"
+}

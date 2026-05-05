@@ -1,0 +1,66 @@
+{
+  "name": "@fddp/next-sdk",
+  "version": "0.1.0",
+  "description": "FDDP Next.js SDK for the federated domain data platform.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Unicode01/FDDP.git",
+    "directory": "packages/nextjs-sdk"
+  },
+  "bugs": {
+    "url": "https://github.com/Unicode01/FDDP/issues"
+  },
+  "homepage": "https://github.com/Unicode01/FDDP#readme",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "bin": {
+    "fddp": "./dist/cli.js",
+    "fddp-codegen": "./dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js",
+      "require": "./dist/react.cjs"
+    },
+    "./next": {
+      "types": "./dist/next.d.ts",
+      "import": "./dist/next.js",
+      "require": "./dist/next.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "examples",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts src/react.tsx src/next.ts src/cli.ts --format esm,cjs --dts",
+    "codegen:example": "node dist/cli.js --input examples/contract.json --output examples/fddp.generated.ts",
+    "test:cli": "tsx src/cli.test.ts",
+    "test:codegen": "tsx src/codegen.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "next": ">=14",
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "tsx": "^4.21.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0"
+  }
+}
