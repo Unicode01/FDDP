@@ -1,7 +1,7 @@
 {
   "name": "@fddp/next-sdk",
   "version": "0.1.0",
-  "description": "FDDP Next.js SDK for the federated domain data platform.",
+  "description": "TypeScript SDK for FDDP backend-owned application data access governance.",
   "license": "MIT",
   "repository": {
     "type": "git",

@@ -1,8 +1,8 @@
 # go-fddp
 
-First-version Go backend package for the federated domain data platform.
+First-version Go backend runtime for FDDP application data access governance.
 
-FDDP is backend-defined first. This package owns the data contract, authorization boundary, safe storage mapping, query/command budgets, cache safety, and resolver execution. TypeScript codegen exists to make that backend contract pleasant to consume; it is not the security boundary.
+FDDP is backend-owned first. This package owns the data contract, authorization boundary, safe storage mapping, query/command budgets, cache safety, and resolver execution for page-data access. TypeScript codegen exists to make that backend contract pleasant to consume; it is not the security boundary.
 
 It provides a small runtime for the MVP protocol:
 
