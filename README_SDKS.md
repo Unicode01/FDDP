@@ -1,8 +1,8 @@
-# FDDP SDK MVP
+# FDDP SDK Notes
 
 This workspace contains first-version SDK/runtime packages for the FDDP architecture.
 
-Positioning: FDDP is backend-defined data contract infrastructure with frontend-friendly access. The backend owns the domain contract, authorization boundary, query planning, cost limits, and data mapping. The frontend consumes the generated contract; it does not decide what data is allowed or how storage is queried.
+Positioning: FDDP is backend-owned application data access governance. The backend owns the data contract, authorization boundary, query planning, cost limits, and storage mapping for page-data access. The frontend consumes the generated contract; it does not decide what data is allowed or how storage is queried. REST remains the better home for business-process APIs such as login, payment, file transfer, webhooks, long-running jobs, and public integration APIs.
 
 ## 30-minute check
 
@@ -17,7 +17,7 @@ cd ../../examples/demo
 node smoke-test.mjs
 ```
 
-The smoke test starts the Go demo backend on a free local port, pulls `GET /contract`, regenerates frontend types, runs `npm run typecheck`, executes one query, executes one command, and confirms an unsafe filter is rejected.
+The smoke test starts the Go demo backend on a free local port, pulls `GET /contract`, regenerates frontend types, runs TypeScript typecheck, executes one query, executes one command, and confirms an unsafe filter is rejected.
 
 ## Packages
 

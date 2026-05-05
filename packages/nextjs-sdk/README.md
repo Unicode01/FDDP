@@ -1,10 +1,12 @@
 # @fddp/next-sdk
 
-First-version Next.js SDK for FDDP.
+First-version TypeScript / Next.js SDK for FDDP.
 
-FDDP is backend-defined data contract infrastructure with frontend-friendly access. The backend publishes the contract and enforces authorization, query limits, storage mapping, and command boundaries. This SDK consumes that contract and keeps application code short.
+FDDP is backend-owned application data access governance. The backend publishes a governed contract for page reads and simple data commands, while enforcing authorization, tenant boundaries, query limits, storage mapping, and command boundaries. This SDK consumes that backend contract and keeps application code short.
 
-This package intentionally starts with the MVP-0 surface:
+It is meant to reduce scattered page-data REST endpoints, not replace REST for business-process APIs such as login, payment, upload/download, webhooks, long-running jobs, or externally stable public APIs.
+
+This package intentionally starts with the v0.1 alpha surface:
 
 - `createFddpClient()` posts Query Plane requests to `/data/query`.
 - Query responses are normalized to the V9 `data/errors/meta` envelope.
