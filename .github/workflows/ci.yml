@@ -36,6 +36,9 @@ jobs:
         working-directory: packages/go-fddp
         run: go test ./...
 
+      - name: Check documentation release versions
+        run: npm run check:doc-versions
+
       - name: Install TypeScript SDK dependencies
         working-directory: packages/nextjs-sdk
         run: npm ci

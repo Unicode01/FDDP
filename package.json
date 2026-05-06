@@ -45,6 +45,7 @@
     "LICENSE"
   ],
   "scripts": {
+    "check:doc-versions": "node scripts/check-doc-versions.mjs",
     "prepare": "npm --prefix packages/nextjs-sdk install && npm --prefix packages/nextjs-sdk run build"
   },
   "peerDependencies": {

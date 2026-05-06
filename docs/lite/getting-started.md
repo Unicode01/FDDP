@@ -15,10 +15,9 @@ Lite is not a database gateway. The backend still owns fields, filters, order ke
 
 ## 15-Minute Path
 
-Create a starter app:
+Install the SDK using the current instructions in [Install FDDP](../install.md), then create a starter app:
 
 ```bash
-npm install github:Unicode01/FDDP#v0.1.2-alpha
 npx fddp new my-fddp-app
 ```
 
@@ -319,7 +318,7 @@ Rerun `npm run codegen` after changing backend registrations.
 
 `go get` is slow or fails through a regional proxy:
 
-The module tag is `packages/go-fddp/v0.1.2-alpha`. If a Go proxy returns a timeout, retry later or use `GOPROXY=direct` for the install check.
+See [Install FDDP](../install.md). Go submodule tags use `packages/go-fddp/<release-tag>`. If a Go proxy returns a timeout, retry later or use `GOPROXY=direct` for the install check.
 
 ## Next Steps
 

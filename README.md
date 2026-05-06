@@ -4,7 +4,7 @@ FDDP is an experimental application data-access governance layer.
 
 It lets a backend publish a governed data contract for page reads and simple data commands, then generates a typed TypeScript SDK for application code. The backend remains the authority for permissions, tenant boundaries, query cost, field-to-storage mapping, batching, cache scope, and contract evolution.
 
-Status: `v0.1.2-alpha`. The core path works, but APIs are still expected to evolve.
+Status: alpha. The core path works, but APIs are still expected to evolve. Current install commands are kept in [Install FDDP](docs/install.md).
 
 ## Start Here
 
@@ -68,20 +68,11 @@ The backend still decides which fields exist, who can read them, how they map to
 
 ## Quick Start
 
-Install the TypeScript SDK from GitHub while the package is not published to npm:
+Use [Install FDDP](docs/install.md) for the current TypeScript SDK and Go runtime install commands. While the TypeScript package is not published to npm, install it from the current GitHub release tag, then create a starter:
 
 ```bash
-npm install github:Unicode01/FDDP#v0.1.2-alpha
 npx fddp new my-fddp-app
 ```
-
-Install the Go runtime:
-
-```bash
-go get github.com/Unicode01/FDDP/packages/go-fddp@v0.1.2-alpha
-```
-
-The Go module lives in a subdirectory, so the matching Git tag is `packages/go-fddp/v0.1.2-alpha`.
 
 For source development, build the TypeScript SDK first, then run the local CLI:
 
