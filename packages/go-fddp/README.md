@@ -249,11 +249,7 @@ Use `fddplite.NewProductionApp(db, options...)` for deployment defaults and `fdd
 
 ## Install
 
-```bash
-go get github.com/Unicode01/FDDP/packages/go-fddp@v0.1.2-alpha
-```
-
-This module is stored under `packages/go-fddp`, so releases use the Git tag form `packages/go-fddp/v0.1.2-alpha`.
+Current Go install commands and release tag rules are maintained in [Install FDDP](../../docs/install.md).
 
 ## Minimal server
 

@@ -26,19 +26,7 @@ The smoke test starts the Go demo backend on a free local port, pulls `GET /cont
 
 ## Install Before Package Publishing
 
-The TypeScript SDK is not published to npm yet. Install it from the GitHub release tag for now:
-
-```bash
-npm install github:Unicode01/FDDP#v0.1.2-alpha
-```
-
-The Go runtime is a subdirectory module:
-
-```bash
-go get github.com/Unicode01/FDDP/packages/go-fddp@v0.1.2-alpha
-```
-
-That Go command resolves through the Git tag `packages/go-fddp/v0.1.2-alpha`.
+Install commands and release tag rules are maintained in [Install FDDP](docs/install.md). Keep concrete release versions there so package docs do not drift across releases.
 
 ## Protocol endpoints
 

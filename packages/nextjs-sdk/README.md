@@ -20,11 +20,7 @@ This package intentionally starts with the v0.1 alpha surface:
 
 ## Install
 
-The package is not published to npm yet. Install from GitHub for now:
-
-```bash
-npm install github:Unicode01/FDDP#v0.1.2-alpha
-```
+The package is not published to npm yet. Current GitHub install commands and release tag rules are maintained in [Install FDDP](../../docs/install.md).
 
 ## Starter project
 
