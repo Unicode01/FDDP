@@ -6,6 +6,12 @@ It lets a backend publish a governed data contract for page reads and simple dat
 
 Status: `v0.1.2-alpha`. The core path works, but APIs are still expected to evolve.
 
+## Start Here
+
+If you are trying FDDP in a small Go/GORM project, start with [FDDP Lite Getting Started](docs/lite/getting-started.md).
+
+That guide is the shortest path from ordinary GORM models to typed frontend `api.load(...)` and `api.command...` calls. The rest of this README explains the broader architecture and package layout.
+
 ## Positioning
 
 FDDP is not trying to replace every REST API.
@@ -56,6 +62,7 @@ The backend still decides which fields exist, who can read them, how they map to
 
 - `packages/go-fddp`: Go runtime, FDDP Lite, GORM adapter, query/command guards, auth identity hooks, trace, cache, idempotency, and contract publication.
 - `packages/nextjs-sdk`: TypeScript SDK, generated `createFddpApi`, React/Next helpers, contract codegen/check/diff, and `fddp new` starter scaffolding.
+- `docs/lite/getting-started.md`: Lite-first guide for small Go/GORM projects.
 - `examples/demo`: end-to-end GORM + Lite + TypeScript SDK demo with smoke test.
 - `examples/gin`: Gin mounting example under `/api/fddp/*` with bearer-token identity resolution.
 

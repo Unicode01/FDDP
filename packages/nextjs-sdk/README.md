@@ -6,6 +6,8 @@ FDDP is backend-owned application data access governance. The backend publishes 
 
 It is meant to reduce scattered page-data REST endpoints, not replace REST for business-process APIs such as login, payment, upload/download, webhooks, long-running jobs, or externally stable public APIs.
 
+New to FDDP? If you are using a small Go/GORM backend, start with [FDDP Lite Getting Started](../../docs/lite/getting-started.md), then come back here for TypeScript SDK details.
+
 This package intentionally starts with the v0.1 alpha surface:
 
 - `createFddpClient()` posts Query Plane requests to `/data/query`.
