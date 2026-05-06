@@ -8,4 +8,3 @@ These documents are useful for understanding the original FDDP design direction,
 
 - `fddp-architecture-prototype-v9.md`: Markdown source of the v9 architecture prototype.
 - `fddp-architecture-prototype-v9.pdf`: PDF export of the same prototype.
-- `fddp-architecture-prototype-v9.docx`: editable document export of the same prototype.
