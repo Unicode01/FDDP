@@ -4,6 +4,8 @@ FDDP Lite is a low-boilerplate entry layer on top of FDDP Core and the GORM adap
 
 Use it when a small project wants to start quickly, while keeping the same contract, query, command, permission, and GORM safety model underneath.
 
+New to Lite? Start with the small-project guide first: [FDDP Lite Getting Started](../../../docs/lite/getting-started.md).
+
 ```go
 app := fddplite.NewDevApp(db)
 

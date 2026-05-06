@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Adds a Lite-first getting-started guide for small Go/GORM projects.
+- Adds a documentation index and links Lite entry points from package READMEs.
+
 ## v0.1.2-alpha
 
 - Adds a root npm package entry so GitHub installation works before npm publishing.
