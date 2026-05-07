@@ -8,6 +8,8 @@ Use it when a small project wants to start quickly, while keeping the same contr
 
 New to Lite? Start with the small-project guide first: [FDDP Lite Getting Started](../../../docs/lite/getting-started.md).
 
+Planning for growth? See [Grow From Lite To Core](../../../docs/lite/grow-to-core.md).
+
 ```go
 app := fddplite.NewDevApp(db)
 
@@ -241,3 +243,5 @@ _ = fddplite.Command[UpdateProfileInput](app, "user.profile.update.custom").
 ```
 
 Move down to `gormadapter` or FDDP Core when you need custom column names, complex scopes, nonstandard relations, cache details, or hand-written resolvers.
+
+For a side-by-side migration example, see [Grow From Lite To Core](../../../docs/lite/grow-to-core.md).
