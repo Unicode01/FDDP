@@ -1,5 +1,7 @@
 # FDDP Lite
 
+[中文入口](README.zh-CN.md)
+
 FDDP Lite is a low-boilerplate entry layer on top of FDDP Core and the GORM adapter.
 
 Use it when a small project wants to start quickly, while keeping the same contract, query, command, permission, and GORM safety model underneath.
