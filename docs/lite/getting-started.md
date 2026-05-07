@@ -1,5 +1,7 @@
 # FDDP Lite Getting Started
 
+[FDDP Lite 中文入口](../../packages/go-fddp/fddplite/README.zh-CN.md)
+
 FDDP Lite is the small-project entry point for FDDP.
 
 Use it when you have a Go backend, GORM models, and frontend pages that need profile data, dashboard data, filtered lists, relation expand, or simple create/update/delete commands.

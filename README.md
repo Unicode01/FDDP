@@ -1,5 +1,7 @@
 # FDDP
 
+[中文说明](README.zh-CN.md)
+
 FDDP is an experimental application data-access governance layer.
 
 It lets a backend publish a governed data contract for page reads and simple data commands, then generates a typed TypeScript SDK for application code. The backend remains the authority for permissions, tenant boundaries, query cost, field-to-storage mapping, batching, cache scope, and contract evolution.
