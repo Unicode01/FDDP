@@ -4,6 +4,7 @@
 
 - [FDDP Lite API](README.md)
 - [FDDP Lite Getting Started](../../../docs/lite/getting-started.md)
+- [Grow From Lite To Core](../../../docs/lite/grow-to-core.md)
 - [Install FDDP](../../../docs/install.md)
 
 ## Lite 解决什么
@@ -123,6 +124,7 @@ app := fddplite.NewApp(db, options...)
 ## 下一步
 
 - 想快速跑通：看 [FDDP Lite Getting Started](../../../docs/lite/getting-started.md)。
+- 想看如何从 Lite 下沉到 Core：看 [Grow From Lite To Core](../../../docs/lite/grow-to-core.md)。
 - 想看完整 Lite API：看 [英文 Lite README](README.md)。
 - 想看 GORM 映射细节：看 [gormadapter](../gormadapter/README.md)。
 - 想看端到端 demo：看 [examples/demo](../../../examples/demo/README.md)。

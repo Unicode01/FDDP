@@ -65,6 +65,7 @@ The backend still decides which fields exist, who can read them, how they map to
 - `packages/go-fddp`: Go runtime, FDDP Lite, GORM adapter, query/command guards, auth identity hooks, trace, cache, idempotency, and contract publication.
 - `packages/nextjs-sdk`: TypeScript SDK, generated `createFddpApi`, React/Next helpers, contract codegen/check/diff, and `fddp new` starter scaffolding.
 - `docs/lite/getting-started.md`: Lite-first guide for small Go/GORM projects.
+- `docs/lite/grow-to-core.md`: side-by-side path from Lite to `gormadapter` to Core.
 - `examples/demo`: end-to-end GORM + Lite + TypeScript SDK demo with smoke test.
 - `examples/gin`: Gin mounting example under `/api/fddp/*` with bearer-token identity resolution.
 

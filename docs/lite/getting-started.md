@@ -300,6 +300,8 @@ app.Engine().RegisterResource(...)
 
 As long as the contract shape remains compatible, frontend calls like `api.load(...)` and `api.command.user.profile.update(...)` can stay the same.
 
+For a concrete side-by-side example, see [Grow From Lite To Core](grow-to-core.md).
+
 ## Common Problems
 
 `api.load(...)` returns permission errors:
@@ -325,6 +327,7 @@ See [Install FDDP](../install.md). Go submodule tags use `packages/go-fddp/<rele
 ## Next Steps
 
 - Read the API reference: [FDDP Lite API](../../packages/go-fddp/fddplite/README.md)
+- Grow beyond Lite: [Grow From Lite To Core](grow-to-core.md)
 - Inspect the end-to-end demo: [examples/demo](../../examples/demo/README.md)
 - Mount in Gin: [examples/gin](../../examples/gin/README.md)
 - Use lower-level Go runtime APIs: [go-fddp](../../packages/go-fddp/README.md)
